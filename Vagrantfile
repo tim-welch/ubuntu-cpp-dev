@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-'SCRIPT'
     apt-get -y update
     apt-get -y dist-upgrade
+    apt-get -y install nfs-common
   SCRIPT
 
   config.vm.provision "shell", inline: <<-'SCRIPT'
@@ -31,6 +32,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-'SCRIPT'
     apt-get -y clean
   SCRIPT
+
+  config.vm.network "private_network", type: "dhcp"
+  config.vm.synced_folder "~/src", "/vagrant", type: "nfs", nfs_udp: false
 
 end
 

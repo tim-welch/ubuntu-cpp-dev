@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
     apt-get -y install doxygen graphviz
     apt-get -y install cppcheck
     apt-get -y install pkg-config
-    apt-get -y install powerline
+    apt-get -y install powerline fonts-powerline python3-powerline python3-powerline-gitstatus
   SCRIPT
 
   config.vm.provision "shell", privileged: false, inline: <<-'SCRIPT'
